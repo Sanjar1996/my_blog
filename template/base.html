@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog sahifasi</title>
+</head>
+<body>
+    <header>
+        <h1>
+            <a href="{% url 'home' %}">Bosh Sahifa</a>
+        </h1>
+    </header>
+    <div>
+        {% if user.is_authenticated %}
+            <p>
+                Xush kelibsiz <b>{{ user.username }}</b>
+                <p><a href="{% url 'logout' %}">Chiqish</a></p>
+            </p>
+        {% else %}
+            <a href="{% url 'login' %}">Kirish</a> |
+            <a href="{%url  'signup' %}">Ro'yhatdan o'tish</a>
+        {% endif %}
+    </div>
+
+{% block content %}
+
+{% endblock content %}
+    <a href="{% url 'post_new' %}">Blog qo'shish</a>
+</body>
+</html>
